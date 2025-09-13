@@ -18,8 +18,15 @@ class LendersTable
                 TextColumn::make('company_name')->sortable()->searchable(),
                 TextColumn::make('balance')
                     ->money('idr', locale: 'id')
+                    ->sortable(),
+                TextColumn::make('created_at')
+                    ->dateTime()
                     ->sortable()
-
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
