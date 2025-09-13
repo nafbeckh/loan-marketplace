@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Offer extends Model
+class LoanApplication extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function lender()
+    public function borrowed()
     {
-        return $this->belongsTo(Lender::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function loan_applications()
+    public function offer()
     {
-        return $this->hasMany(LoanApplication::class);
+        return $this->belongsTo(Offer::class);
     }
 }
