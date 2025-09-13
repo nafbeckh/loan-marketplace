@@ -37,7 +37,6 @@ class OffersTable
                     ->numeric()
                     ->money('idr', locale: 'id')
                     ->sortable(),
-                TextColumn::make('status'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

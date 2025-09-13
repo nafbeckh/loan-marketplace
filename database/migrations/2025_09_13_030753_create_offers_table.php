@@ -18,7 +18,6 @@ return new class extends Migration
             $table->decimal('interest_rate', 5, 2);
             $table->integer('installment_amount')->nullable();
             $table->integer('tenor');
-            $table->enum('status', ['pending', 'active'])->default('pending');
             $table->timestamps();
         });
     }

@@ -25,7 +25,6 @@ class OfferInfolist
                 TextEntry::make('tenor')
                     ->numeric()
                     ->suffix(' bulan'),
-                TextEntry::make('status'),
                 TextEntry::make('created_at')
                     ->dateTime(),
                 TextEntry::make('updated_at')
