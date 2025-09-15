@@ -19,15 +19,4 @@ class EditOffer extends EditRecord
             DeleteAction::make(),
         ];
     }
-
-    protected function mutateFormDataBeforeSave(array $data): array
-    {
-        $data['installment_amount'] = LoanCalculator::calculateInstallment(
-            $data['amount'],
-            $data['interest_rate'],
-            $data['tenor']
-        );
-
-        return $data;
-    }
 }

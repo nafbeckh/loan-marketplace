@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('lender_id')->constrained();
             $table->integer('amount');
             $table->decimal('interest_rate', 5, 2);
-            $table->integer('installment_amount')->nullable();
             $table->integer('tenor');
             $table->timestamps();
         });
