@@ -70,3 +70,28 @@ Platform pinjaman online.
 | 6  | Bank EFGH |   Rp 50.000.000 | 10%             | 36 bulan |       Rp 1.805.555 |
 
 **Note:** Angsuran per bulan akan menyesuaikan dengan jumlah pinjaman dikurang dengan jumlah uang muka yang telah diinputkan borrower.
+
+## Simulasi Penawaran
+- **Amount** = jumlah pinjaman (principal)
+- **DP** = jumlah uang muka pinjaman (principal)
+- **Tenor** = durasi pinjaman dalam bulan
+- **Interest Rate** = tingkat bunga per tahun (%)
+- **I** = bunga bulanan
+
+**Rumus perhitungan:**
+
+1. I = (Interest Rate / 100) x 12
+2. Total Amount = Amount - DP
+3. Installment = (Total Amount + (Total Amount × I × Tenor)) / Tenor
+
+**Contoh:**
+
+- Amount = 15.000.000
+- DP = 1.500.000
+- Tenor = 12 bulan
+- Interest Rate = 8.75%
+
+**Perhitungan:**
+1. I = (8.75 / 100) / 12 ≈ 0.007291666
+2. Total Amount = 15.000.000 - 1.500.000 ≈ 13.500.000
+3. Installment = (13.500.000 + (13.500.000 x 0.007291666 x 12)) / 12 ≈ 1.223.437,50
