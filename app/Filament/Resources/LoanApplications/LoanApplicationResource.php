@@ -14,10 +14,20 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class LoanApplicationResource extends Resource
 {
     protected static ?string $model = LoanApplication::class;
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->whereHas('offer', function ($query) {
+                $query->where('lender_id', Auth::id());
+            });
+    }
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedFolderArrowDown;
 

@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Offers\Pages;
 
 use App\Filament\Resources\Offers\OfferResource;
-use App\Helpers\LoanCalculator;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
