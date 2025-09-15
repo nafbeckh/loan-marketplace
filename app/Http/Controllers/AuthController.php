@@ -26,7 +26,11 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('home');
+            if (Auth::user()->role === 'lender') {
+                return redirect('/lender');
+            }
+
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
@@ -45,11 +49,12 @@ class AuthController extends Controller
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
+            'role'     => 'borrower',
         ]);
 
         Auth::login($user);
 
-        return redirect('/home');
+        return redirect('/');
     }
 
     public function logout(Request $request)
