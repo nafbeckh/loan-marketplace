@@ -17,12 +17,8 @@ class LoanApplicationsTable
     {
         return $table
             ->columns([
-                TextColumn::make('borrowed.name')
+                TextColumn::make('borrower.name')
                     ->label('Peminjam')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('offer.lender.company_name')
-                    ->label('Pemberi Pinjaman')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('offer.amount')
@@ -30,7 +26,12 @@ class LoanApplicationsTable
                     ->numeric()
                     ->money('idr', locale: 'id')
                     ->sortable(),
-                TextColumn::make('offer.installment_amount')
+                TextColumn::make('dp_amount')
+                    ->label('Uang Muka')
+                    ->numeric()
+                    ->money('idr', locale: 'id')
+                    ->sortable(),
+                TextColumn::make('installment_amount')
                     ->label('Angsuran Per Bulan')
                     ->numeric()
                     ->money('idr', locale: 'id')

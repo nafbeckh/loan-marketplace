@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('loan_applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('borrowed_id')->constrained(
+            $table->foreignId('borrower_id')->constrained(
                 table: 'users', indexName: 'loan_applications_user_id'
             );
             $table->foreignId('offer_id')->constrained();
+            $table->integer('dp_amount');
             $table->string('purpose');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();

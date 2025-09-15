@@ -11,15 +11,17 @@ class LoanApplicationInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('borrowed.name')
+                TextEntry::make('borrower.name')
                     ->label('Peminjam'),
-                TextEntry::make('offer.lender.company_name')
-                    ->label('Pemberi Pinjaman'),
                 TextEntry::make('offer.amount')
                     ->label('Jumlah Pinjaman')
                     ->numeric()
                     ->money('idr', locale: 'id'),
-                TextEntry::make('offer.installment_amount')
+                TextEntry::make('dp_amount')
+                    ->label('Angsuran Per Bulan')
+                    ->numeric()
+                    ->money('idr', locale: 'id'),
+                TextEntry::make('installment_amount')
                     ->label('Angsuran Per Bulan')
                     ->numeric()
                     ->money('idr', locale: 'id'),

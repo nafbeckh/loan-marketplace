@@ -9,22 +9,26 @@ class Offer extends Model
 {
     use HasFactory;
 
-    protected $append = ['installment_amount'];
+    protected $appends = ['installment_amount'];
 
     protected $guarded = [];
 
-    public function getInstallmentAmountAttribute()
+    public static function calculateInstallment($amount, $tenor, $interestRate)
     {
-        $i = ($this->interest_rate / 100) / 12;
+        $i = ($interestRate / 100) / 12;
 
-        if ($this->amount > 0 && $this->tenor > 0) {
-            $total_payable = $this->amount + ($this->amount * ($i * $this->tenor));
-            $installment = $total_payable / $this->tenor;
-
+        if ($amount > 0 && $tenor > 0) {
+            $totalPayable = $amount + ($amount * ($i * $tenor));
+            $installment = $totalPayable / $tenor;
             return round($installment, 2);
         }
 
         return 0;
+    }
+
+    public function getInstallmentAmountAttribute()
+    {
+        return $this->calculateInstallment($this->amount, $this->tenor, $this->interest_rate);
     }
 
     public function lender()

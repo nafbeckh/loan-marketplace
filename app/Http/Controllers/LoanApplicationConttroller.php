@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\LoanCalculator;
+use App\Models\LoanApplication;
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoanApplicationConttroller extends Controller
 {
@@ -52,6 +53,40 @@ class LoanApplicationConttroller extends Controller
             'title' => 'Ajukan Pinjaman',
             'offers' => $offers,
             'formData' => $data
+        ]);
+    }
+
+    public function apply(Request $request)
+    {
+        $data = $request->validate([
+            'offer_id' => 'required|exists:offers,id',
+            'dp_amount'  => 'required|numeric',
+            'purpose'     => 'required|string',
+        ]);
+
+        $offer = Offer::with('lender')->findOrFail($request->offer_id);
+
+        LoanApplication::create([
+            'borrower_id' => Auth::id(),
+            'offer_id'    => $offer->id,
+            'dp_amount'  => $data['dp_amount'],
+            'purpose'     => $data['purpose']
+        ]);
+
+        return redirect()
+            ->route('loan.show')
+            ->with('success', 'Berhasil mengajukan pinjaman');
+    }
+
+    public function show()
+    {
+        $loans = LoanApplication::where(['borrower_id' => Auth::id()])
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+        return view('loan.index', [
+            'title' => 'Pinjaman Diajukan',
+            'loans' => $loans
         ]);
     }
 }

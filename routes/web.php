@@ -13,7 +13,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/loan-application', [LoanApplicationConttroller::class, 'index'])->name('loan.form');
-
-    Route::post('/loan-application', [LoanApplicationConttroller::class, 'getOffers'])->name('offers.get');
+    Route::get('/loan/form', [LoanApplicationConttroller::class, 'index'])->name('loan.form');
+    Route::post('/loan/form', [LoanApplicationConttroller::class, 'getOffers'])->name('offers.get');
+    Route::post('/loan/apply', [LoanApplicationConttroller::class, 'apply'])->name('offers.apply');
+    Route::get('/loan', [LoanApplicationConttroller::class, 'show'])->name('loan.show');
 });

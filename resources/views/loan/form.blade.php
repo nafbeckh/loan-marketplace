@@ -181,10 +181,17 @@
                                 <h5 class="text-lg">{{ $offer->interest_rate }}%</h5>
                                     <p class="text-gray-700">per tahun</p>
                                 </div>
-                                <button
-                                    class="cursor-pointer mt-4 w-[80%] rounded-md bg-indigo-600 px-2 py-2 text-white text-sm shadow hover:bg-indigo-500 focus:outline-none">
-                                    Pilih Produk
-                                </button>
+                                <form method="POST" action="{{ route('offers.apply') }}">
+                                    @csrf
+                                    <input type="hidden" name="offer_id" value="{{ $offer->id }}">
+                                    <input type="hidden" name="dp_amount" value="{{ old('dp_amount', $formData['dp_amount'] ?? '') }}">
+                                    <input type="hidden" name="purpose" value="{{ old('purpose', $formData['purpose'] ?? '') }}">
+                                    <button
+                                        type="submit"
+                                        class="cursor-pointer mt-4 w-[80%] rounded-md bg-indigo-600 px-2 py-2 text-white text-sm shadow hover:bg-indigo-500 focus:outline-none">
+                                        Pilih Produk
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
