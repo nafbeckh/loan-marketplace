@@ -5,6 +5,7 @@ Platform pinjaman online.
 - **Borrower:**: ajukan pinjaman, lihat penawaran, pilih produk pinjaman.
 - **Lender:**: kelola data penawaran, dan aplikasi pinjaman.
 - Perhitungan cicilan dengan bunga tetap.
+- Menggunakan <a href="https://laravel.com/docs/12.x/releases">Laravel 12</a>, <a href="https://filamentphp.com/">Filament</a> dan <a href="https://tailwindcss.com/">TailwindCSS</a>
 
 ## System Requirements
 - PHP ^8.2
@@ -28,12 +29,28 @@ Platform pinjaman online.
 - **Lender:** → akses melalui Filament panel /lender
 
 ## ERD
+- users one to one lenders
+- lender one to mary offers
+- offers one to many loan_applications
+- loan_applications many to one users
+
 ![ERD](docs/ERD.png)
 
-## Flowchart
-
+## Diagram Alur
 ### Borrower
+![borrower](docs/diagram-borrower.png)
+
+1. Login atau registrasi akun
+2. Mengisi form pengajuan pinjaman
+3. Jika tidak ada penawaran yang sesuai dengan pinjaman yang diajukan maka isi form pengajuan ulang, Jika ada maka tampilkan list penawaran
+4. Pilih produk penawaran.
+
 ### Lender
+![lender](docs/diagram-lender.png)
+1. Login dashboard lender
+2. Isi data lender dan tambah data penawaran
+3. Lihat aplikasi pinjaman
+4. Approve atau reject pinjaman yang telah diajukan borrower. 
 
 ## Data Seeder
 ### Lender
