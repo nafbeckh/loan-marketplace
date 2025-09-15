@@ -14,4 +14,4 @@ Platform pinjaman online.
 - Generate key dengan `php artisan key:generate`
 - Sesuaikan environtment di file `.env`
 - Migrasi database `php artisan migrate --seed`
-- Jalankan server `php artisan serv`
+- Jalankan server `php artisan serv` dan `npm run build`
