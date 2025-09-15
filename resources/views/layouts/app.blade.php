@@ -22,7 +22,7 @@
                                             Beranda
                                     </a>
 
-                                    <a href="#"
+                                    <a href="{{ route('loan.form') }}"
                                         class="rounded-md px-3 py-2 text-sm font-medium
                                         {{ $title === 'Ajukan Pinjaman' ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}">
                                             Ajukan Pinjaman
@@ -61,4 +61,6 @@
             </main>
         </div>
     </body>
+
+    @stack('js')
 </html>
