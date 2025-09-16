@@ -18,8 +18,13 @@ class StatsDashboard extends StatsOverviewWidget
 
         $balance = $lender?->balance ?? Lender::sum('balance');
 
-        $approved = LoanApplication::where('status', 'approved')->count();
-        $rejected = LoanApplication::where('status', 'rejected')->count();
+        $approved = LoanApplication::whereHas('offer', function ($query) use ($lender) {
+                        $query->where('lender_id', $lender->id);
+                    })->where('status', 'approved')->count();
+        $rejected = LoanApplication::whereHas('offer', function ($query) use ($lender) {
+                        $query->where('lender_id', $lender->id);
+                    })->
+                    where('status', 'rejected')->count();
 
         return [
             Stat::make('Balance', 'Rp ' . number_format($balance, 0, ',', '.'))

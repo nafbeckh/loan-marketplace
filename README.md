@@ -2,8 +2,8 @@
 Platform pinjaman online.
 
 ## Fitur Utama
-- **Borrower:**: ajukan pinjaman, lihat penawaran, pilih produk pinjaman.
-- **Lender:**: kelola data penawaran, dan aplikasi pinjaman.
+- **Borrower:** Ajukan pinjaman, lihat penawaran, pilih produk pinjaman.
+- **Lender:** Kelola data penawaran, dan aplikasi pinjaman.
 - Perhitungan cicilan dengan bunga tetap.
 - Menggunakan <a href="https://laravel.com/docs/12.x/releases">Laravel 12</a>, <a href="https://filamentphp.com/">Filament</a> dan <a href="https://tailwindcss.com/">TailwindCSS</a>
 
@@ -95,3 +95,27 @@ Platform pinjaman online.
 1. I = (8.75 / 100) / 12 ≈ 0.007291666
 2. Total Amount = 15.000.000 - 1.500.000 ≈ 13.500.000
 3. Installment = (13.500.000 + (13.500.000 x 0.007291666 x 12)) / 12 ≈ 1.223.437,50
+
+## Screenshot
+### Borrower
+**Login**
+![login](docs/login.png)
+
+**Home**
+![home](docs/home.png)
+
+**Form Pinjaman**
+![loan-form](docs/loan-form.png)
+
+**Pinjaman yang Diajukan**
+![loan](docs/loan.png)
+
+### Lender
+**Dashboard**
+![dashboard](docs/dashboard.png)
+
+**Offers**
+![offers](docs/offers.png)
+
+**Loan Application**
+![loan-application](docs/loan-application.png)
